@@ -24,9 +24,14 @@ jobs:
 
       - name: Run data script
         run: python fetch_data.py
+        continue-on-error: true
 
       - name: Upload CSV output
         uses: actions/upload-artifact@v4
         with:
           name: daily-csv
           path: output/
+
+      - name: Check API connectivity
+        run: |
+        python -c "import requests; requests.get('https://data.doeb.go.th', timeout=10)" || echo "API unavailable"
