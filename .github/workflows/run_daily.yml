@@ -32,6 +32,6 @@ jobs:
           name: daily-csv
           path: output/
 
-      - name: Check API connectivity
-        run: |
-        python -c "import requests; requests.get('https://data.doeb.go.th', timeout=10)" || echo "API unavailable"
+    - name: Check API connectivity
+      run: |
+      python -c "import requests; requests.get('https://data.doeb.go.th', timeout=10)" || echo "API unavailable"
